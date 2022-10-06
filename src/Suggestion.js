@@ -1,0 +1,70 @@
+import React, { useState } from 'react';
+
+
+function Suggestion() {
+    const [drink, setDrink] = useState("");
+    const [image, setImage] = useState("");
+    const [isAlcoholic, setIsAlcoholic] = useState(false);
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setDrink('');
+        setImage("");
+        setIsAlcoholic(false);
+        if (isAlcoholic === false) {
+            fetch('https://drinks-server.herokuapp.com/non-alcoholic', {
+            method: 'POST',
+            body: JSON.stringify({
+                "strDrink": drink,
+                "strDrinkThumb": image
+            }),
+            headers: { 'Content-type': 'application/json'}
+            
+        })
+        }
+            fetch('https://drinks-server.herokuapp.com/alcoholic', {
+            method: 'POST',
+            body: JSON.stringify({
+                "strDrink": drink,
+                "strDrinkThumb": image
+            }),
+            headers: { 'Content-type': 'application/json'}
+            
+            })
+    }
+    const errorMessage = () => {
+        if (image.includes(".jpeg")) {
+            return <></>;
+        }
+        return "Please submit a url ending with .jpeg."
+    }
+    return (
+        <form onSubmit={handleSubmit}>
+            <label>Enter drink name:
+                <input
+                    type="text"
+                    value={drink}
+                    onChange={(e) => setDrink(e.target.value)}
+                />
+            </label>
+            <label>Enter image url:
+                <input
+                    type="text"
+                    value={image}
+                    onChange={(e) => setImage(e.target.value)}
+                />
+                {errorMessage()}
+            </label>
+            <label>Check if alcoholic.
+                <input 
+                type="checkbox"
+                onChange={(e) => setIsAlcoholic(e.target.checked)}
+                checked={isAlcoholic}
+                />
+            </label>
+            <input type="submit"></input>
+        </form>
+    )
+}
+
+export default Suggestion;

@@ -1,0 +1,29 @@
+.home {
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.nav {
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 22px;
+}
+
+.drinks {
+    display:flex;
+    align-items:center;
+    flex-direction:column;
+}
+
+.img {
+    width: 100px;
+    height: 100px;
+}
+
+.drinklist {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
