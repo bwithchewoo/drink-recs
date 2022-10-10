@@ -6,7 +6,7 @@ function Suggestion() {
     const [image, setImage] = useState("");
     const [isAlcoholic, setIsAlcoholic] = useState(false);
     const [isDisabled, setIsDisabled] = useState(true);
-    const [errorMessage, setErrorMessage] = useState("abcd");
+    
 
     const handleSubmit = (event) => {
         event.preventDefault();
