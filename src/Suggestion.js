@@ -5,6 +5,8 @@ function Suggestion() {
     const [drink, setDrink] = useState("");
     const [image, setImage] = useState("");
     const [isAlcoholic, setIsAlcoholic] = useState(false);
+    const [isDisabled, setIsDisabled] = useState(true);
+    const [errorMessage, setErrorMessage] = useState("abcd");
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -32,28 +34,45 @@ function Suggestion() {
             
             })
     }
-    const errorMessage = () => {
-        if (image.includes(".jpeg")) {
-            return <></>;
+    // const errorMessage = () => {
+    //     if (image.includes(".jpeg")) {
+    //         return <></>;
+    //     }
+    //     return "Please submit a url ending with .jpeg."
+    // }
+
+    const checkFieldComplete = (drinkinput, imageinput) => {
+        if (drinkinput === '' || imageinput === '' || !imageinput.includes(".jpeg")) {
+           setIsDisabled(true)
         }
-        return "Please submit a url ending with .jpeg."
+        else {
+            setIsDisabled(false)
+        }
     }
+  
+    
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} >
+            
             <label>Enter drink name:
                 <input
                     type="text"
                     value={drink}
-                    onChange={(e) => setDrink(e.target.value)}
+                    onChange={(e) => {
+                        setDrink(e.target.value); 
+                        checkFieldComplete(e.target.value, image);
+                    }}
                 />
             </label>
-            <label>Enter image url:
+            <label>Enter image url(must end with .jpeg):
                 <input
                     type="text"
                     value={image}
-                    onChange={(e) => setImage(e.target.value)}
+                    onChange={(e) => {
+                        setImage(e.target.value);
+                        checkFieldComplete(drink, e.target.value);
+                    }}
                 />
-                {errorMessage()}
             </label>
             <label>Check if alcoholic.
                 <input 
@@ -62,7 +81,7 @@ function Suggestion() {
                 checked={isAlcoholic}
                 />
             </label>
-            <input type="submit"></input>
+            <input type="submit" disabled={isDisabled}></input>
         </form>
     )
 }
