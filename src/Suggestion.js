@@ -34,12 +34,6 @@ function Suggestion() {
             
             })
     }
-    // const errorMessage = () => {
-    //     if (image.includes(".jpeg")) {
-    //         return <></>;
-    //     }
-    //     return "Please submit a url ending with .jpeg."
-    // }
 
     const checkFieldComplete = (drinkinput, imageinput) => {
         if (drinkinput === '' || imageinput === '' || !imageinput.includes(".jpeg")) {
