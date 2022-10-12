@@ -48,7 +48,7 @@ function Suggestion() {
     return (
         <form onSubmit={handleSubmit} className="suggestion">
             
-            <label>Enter drink name:
+            <label style={{marginBottom: "10px"}}>Enter drink name:
                 <input
                     type="text"
                     value={drink}
@@ -58,7 +58,7 @@ function Suggestion() {
                     }}
                 />
             </label>
-            <label>Enter image url(must end with .jpeg):
+            <label style={{marginBottom: "10px"}}>Enter image url(must end with .jpeg):
                 <input
                     type="text"
                     value={image}
@@ -68,7 +68,7 @@ function Suggestion() {
                     }}
                 />
             </label>
-            <label>Check if alcoholic.
+            <label style={{marginBottom: "10px"}}>Check if alcoholic.
                 <input 
                 type="checkbox"
                 onChange={(e) => setIsAlcoholic(e.target.checked)}
