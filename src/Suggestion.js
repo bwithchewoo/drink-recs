@@ -46,7 +46,7 @@ function Suggestion() {
   
     
     return (
-        <form onSubmit={handleSubmit} className="home">
+        <form onSubmit={handleSubmit} className="suggestion">
             
             <label>Enter drink name:
                 <input
