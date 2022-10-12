@@ -47,7 +47,7 @@ function Suggestion() {
     
     return (
         <form onSubmit={handleSubmit} className="suggestion">
-            
+            <img src="https://icons.iconarchive.com/icons/graphicloads/food-drink/256/drink-icon.png"/>
             <label style={{marginBottom: "10px"}}>Enter drink name:
                 <input
                     type="text"
