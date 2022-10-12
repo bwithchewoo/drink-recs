@@ -46,7 +46,7 @@ function Suggestion() {
   
     
     return (
-        <form onSubmit={handleSubmit} >
+        <form onSubmit={handleSubmit} className="home">
             
             <label>Enter drink name:
                 <input
@@ -75,7 +75,7 @@ function Suggestion() {
                 checked={isAlcoholic}
                 />
             </label>
-            <input type="submit" disabled={isDisabled}></input>
+            <input type="submit" value="Submit" disabled={isDisabled}></input>
         </form>
     )
 }
