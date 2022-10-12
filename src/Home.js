@@ -9,6 +9,7 @@ class Home extends Component {
         <p style={{fontSize:"20px"}}>Care for a drink?</p>
  
         <p style={{fontSize:"20px"}}>Discover your next favorite brew here.</p>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwfAFHKFkTQwXgIXUnOuKL6zPUMl32XPJphpCCJApLUkjjO-HY75Dmr1y-L6uJ3Qzx16Y&usqp=CAU"/>
       </div>
     );
   }
