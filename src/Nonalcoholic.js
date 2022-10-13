@@ -30,11 +30,12 @@ class Nonalcoholic extends Component {
 
         return (
             <div className="drinklist">
+                <div>
                 {nonAlcoholicDrinks.map((item) => {
                     return <Drink name={item.strDrink} src={item.strDrinkThumb} id={item.id}/>
                 })}
+                </div>
             </div>
-
         );
     }
 }
