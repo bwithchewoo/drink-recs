@@ -17,7 +17,7 @@ class Drink extends Component{
     render(){
     return (
         <li className="drinks" key={this.props.id} style={{width:'150px',height:'180px'}}>
-            <div style={{wordWrap: "normal", textAlign: "center"}}>{this.props.name}</div>
+            <div style={{wordWrap: "normal", textAlign: "center", marginBottom: "5px"}}>{this.props.name}</div>
             <img className="img" src={this.props.src}/>
             <button onClick={this.incrementMe} style={{marginTop: "5px"}}>❤️Likes: {this.state.count}</button>
         </li>
