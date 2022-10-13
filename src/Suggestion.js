@@ -31,7 +31,6 @@ function Suggestion() {
                 "strDrinkThumb": image
             }),
             headers: { 'Content-type': 'application/json'}
-            
             })
     }
 
