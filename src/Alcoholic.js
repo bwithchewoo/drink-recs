@@ -29,14 +29,16 @@ class Alcoholic extends Component {
         </div>
 
         return (
-            <div className="drinklist">
+            <div >
+                <h2>Alcoholic</h2>
+                <div className="drinklist">
                 {alcoholicDrinks.map((item) => {
                     return (
                         <Drink name={item.strDrink} src={item.strDrinkThumb} id={item.id}/>
                     )
                 })}
+                </div>
             </div>
-
         );
     }
 }
