@@ -6,3 +6,6 @@ You can navigate the app using the navigation bar at the top of the page. If you
 
 # Source Data
 I got the information for my JSON server from https://www.thecocktaildb.com/api.php.
+
+# Stretch Goals
+Create a search bar within the Alcoholic and Non-alcoholic pages so user can check if drink already exists in list. Tie in the like counter to the backend to keep track of all historical like history.
