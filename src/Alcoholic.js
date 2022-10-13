@@ -30,7 +30,7 @@ class Alcoholic extends Component {
 
         return (
             <div >
-                <h2>Alcoholic</h2>
+                <h1 className="home">Alcoholic</h1>
                 <div className="drinklist">
                 {alcoholicDrinks.map((item) => {
                     return (
