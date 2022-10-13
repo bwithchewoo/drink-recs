@@ -5,6 +5,7 @@ function NavBar() {
   return (
     <div className="nav"
       style={{
+        backgroundColor: "lightblue",
         borderBottom: "2px solid black",
         paddingBottom: "10px",
         marginBottom: "12px",
