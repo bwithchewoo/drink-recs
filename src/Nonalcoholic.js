@@ -1,44 +1,36 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import Drink from "./Drink";
 
-class Nonalcoholic extends Component {
-    constructor(props) {
-        super(props);
+function Nonalcoholic() {
+    const [nonAlcoholicDrinks, setnonAlcoholicDrinks] = useState([])
+    const [dataIsLoaded, setDataIsLoaded] = useState(false)
 
-        this.state = {
-            nonAlcoholicDrinks: [],
-            DataisLoaded: false
-        };
-    }
 
-    componentDidMount() {
+    useEffect(() => {
         fetch("https://drinks-server.herokuapp.com/non-alcoholic")
             .then((res) => res.json())
             .then((data) => {
-                this.setState({
-                    nonAlcoholicDrinks: data,
-                    DataisLoaded: true
-                });
-            })
-    }
+                setnonAlcoholicDrinks(data);
+                setDataIsLoaded(true)
+            });
+    })
 
-    render() {
-        const { DataisLoaded, nonAlcoholicDrinks } = this.state;
-        if (!DataisLoaded) return <div>
-            <h1>Loading...</h1>
-        </div>
-
+    if (dataIsLoaded === false) {
         return (
-            <div className="home">
-                <h1>Non-Alcoholic</h1>
-                <div className="drinklist">
-                {nonAlcoholicDrinks.map((item) => {
-                    return <Drink name={item.strDrink} src={item.strDrinkThumb} id={item.id}/>
-                })}
-                </div>
-            </div>
-        );
+            <div>
+                <h1>Loading...</h1>
+            </div>)
     }
+    return (
+        <div className="home">
+            <h1>Non-Alcoholic</h1>
+            <div className="drinklist">
+                {nonAlcoholicDrinks.map((item) => {
+                    return <Drink name={item.strDrink} src={item.strDrinkThumb} id={item.id} />
+                })}
+            </div>
+        </div>
+    )
 }
 
 export default Nonalcoholic;

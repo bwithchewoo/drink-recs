@@ -13,25 +13,25 @@ function Suggestion() {
         setDrink('');
         setImage("");
         setIsAlcoholic(false);
-        if (isAlcoholic === false) {
-            fetch('https://drinks-server.herokuapp.com/non-alcoholic', {
+    
+            fetch(`https://drinks-server.herokuapp.com/${isAlcoholic ? 'alcoholic' : 'non-alcoholic'}`, {
             method: 'POST',
             body: JSON.stringify({
                 "strDrink": drink,
                 "strDrinkThumb": image
             }),
             headers: { 'Content-type': 'application/json'}
-            
         })
-        }
-            fetch('https://drinks-server.herokuapp.com/alcoholic', {
-            method: 'POST',
-            body: JSON.stringify({
-                "strDrink": drink,
-                "strDrinkThumb": image
-            }),
-            headers: { 'Content-type': 'application/json'}
-            })
+        // }
+        // // fetch(`https://drinks-server.herokuapp.com/${isAlcoholic ? 'alcoholic' : 'non-alcoholic'}`
+        //     fetch('https://drinks-server.herokuapp.com/alcoholic', {
+        //     method: 'POST',
+        //     body: JSON.stringify({
+        //         "strDrink": drink,
+        //         "strDrinkThumb": image
+        //     }),
+        //     headers: { 'Content-type': 'application/json'}
+        //     })
     }
 
     const checkFieldComplete = (drinkinput, imageinput) => {
