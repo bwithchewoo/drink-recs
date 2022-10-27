@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import Drink from "./Drink";
 
 function Nonalcoholic() {
-    const [nonAlcoholicDrinks, setnonAlcoholicDrinks] = useState([])
-    const [dataIsLoaded, setDataIsLoaded] = useState(false)
+    const [nonAlcoholicDrinks, setnonAlcoholicDrinks] = useState([]);
+    const [dataIsLoaded, setDataIsLoaded] = useState(false);
 
 
     useEffect(() => {
@@ -11,26 +11,26 @@ function Nonalcoholic() {
             .then((res) => res.json())
             .then((data) => {
                 setnonAlcoholicDrinks(data);
-                setDataIsLoaded(true)
+                setDataIsLoaded(true);
             });
-    })
+    });
 
     if (dataIsLoaded === false) {
         return (
             <div>
                 <h1>Loading...</h1>
-            </div>)
+            </div>);
     }
     return (
         <div className="home">
             <h1>Non-Alcoholic</h1>
             <div className="drinklist">
                 {nonAlcoholicDrinks.map((item) => {
-                    return <Drink name={item.strDrink} src={item.strDrinkThumb} id={item.id} />
+                    return <Drink name={item.strDrink} src={item.strDrinkThumb} id={item.id} />;
                 })}
             </div>
         </div>
-    )
+    );
 }
 
 export default Nonalcoholic;
