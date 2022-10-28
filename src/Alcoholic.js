@@ -1,40 +1,28 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Drink from "./Drink";
 
-function Alcoholic() {
-    const [alcoholicDrinks, setAlcoholicDrinks] = useState([]);
-    const [dataIsLoaded, setDataIsLoaded] = useState(false);
+function Alcoholic({ alcoholicDrinks, dataIsLoadedAlcoholic }) {
 
-
-    useEffect(() => {
-        fetch("https://drinks-server.herokuapp.com/alcoholic")
-            .then((res) => res.json())
-            .then((data) => {
-                setAlcoholicDrinks(data);
-                setDataIsLoaded(true);
-            });
-    });
-
-    if (dataIsLoaded === false) {
+    if (dataIsLoadedAlcoholic === false) {
         return (
             <div>
                 <h1>Loading...</h1>
             </div>);
     }
 
-        return (
-            <div >
-                <h1 className="home">Alcoholic</h1>
-                <div className="drinklist">
+    return (
+        <div >
+            <h1 className="home">Alcoholic</h1>
+            <div className="drinklist">
                 {alcoholicDrinks.map((item) => {
                     return (
-                        <Drink name={item.strDrink} src={item.strDrinkThumb} id={item.id}/>
+                        <Drink name={item.strDrink} src={item.strDrinkThumb} id={item.id} />
                     )
                 })}
-                </div>
             </div>
-        );
-    }
+        </div>
+    );
+}
 
 
 export default Alcoholic;

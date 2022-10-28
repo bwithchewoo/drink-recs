@@ -8,6 +8,7 @@ function Suggestion({alcoholicDrinks, setAlcoholicDrinks, nonAlcoholicDrinks, se
     const [isDisabled, setIsDisabled] = useState(true);
     
     function addDrink(newDrink, alcoholic){
+        console.log('alcoholicDrinks:', alcoholicDrinks, 'newDrink:', newDrink, 'combined New State:', [...alcoholicDrinks, newDrink])
         alcoholic ? setAlcoholicDrinks([...alcoholicDrinks, newDrink]) : setNonAlcoholicDrinks([...nonAlcoholicDrinks, newDrink])
     }
 
