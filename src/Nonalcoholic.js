@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Drink from "./Drink";
 
-function Nonalcoholic() {
-    const [nonAlcoholicDrinks, setnonAlcoholicDrinks] = useState([]);
+function Nonalcoholic({nonAlcoholicDrinks, setNonAlcoholicDrinks}) {
     const [dataIsLoaded, setDataIsLoaded] = useState(false);
-
 
     useEffect(() => {
         fetch("https://drinks-server.herokuapp.com/non-alcoholic")
             .then((res) => res.json())
             .then((data) => {
-                setnonAlcoholicDrinks(data);
+                setNonAlcoholicDrinks(data);
                 setDataIsLoaded(true);
             });
     });

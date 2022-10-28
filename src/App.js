@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter,
   Route,
@@ -10,22 +10,24 @@ import Alcoholic from "./Alcoholic";
 import Nonalcoholic from "./Nonalcoholic";
 import Suggestion from "./Suggestion";
 
-class App extends Component {
-  render() {
+function App(){
+  const [alcoholicDrinks, setAlcoholicDrinks] = useState([]);
+  const [nonAlcoholicDrinks, setNonAlcoholicDrinks] = useState([]);
+
     return (
       <div>
         <BrowserRouter>
           <NavBar />
           <Routes>
             <Route exact path="/" element={<Home />} />
-            <Route exact path="/alcoholic" element={<Alcoholic />} />
-            <Route exact path="/non-alcoholic" element={<Nonalcoholic />} />
+            <Route exact path="/alcoholic" element={<Alcoholic alcoholicDrinks={alcoholicDrinks} setAlcoholicDrinks={setAlcoholicDrinks}/>} />
+            <Route exact path="/non-alcoholic" element={<Nonalcoholic nonAlcoholicDrinks={nonAlcoholicDrinks} setNonAlcoholicDrinks={setNonAlcoholicDrinks}/>} />
             <Route exact path="/suggestion" element={<Suggestion/>}/>
           </Routes>
         </BrowserRouter>
       </div>
     );
   }
-}
+
 
 export default App;

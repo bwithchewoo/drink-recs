@@ -1,32 +1,26 @@
-import React, { Component } from "react";
+import React, { useEffect, useState} from "react";
 import Drink from "./Drink";
 
-class Alcoholic extends Component {
-    constructor(props) {
-        super(props);
+function Alcoholic() {
+    const [alcoholicDrinks, setAlcoholicDrinks] = useState([]);
+    const [dataIsLoaded, setDataIsLoaded] = useState(false);
 
-        this.state = {
-            alcoholicDrinks: [],
-            DataisLoaded: false
-        };
-    }
 
-    componentDidMount() {
+    useEffect(() => {
         fetch("https://drinks-server.herokuapp.com/alcoholic")
             .then((res) => res.json())
             .then((data) => {
-                this.setState({
-                    alcoholicDrinks: data,
-                    DataisLoaded: true
-                });
-            })
-    }
+                setAlcoholicDrinks(data);
+                setDataIsLoaded(true);
+            });
+    });
 
-    render() {
-        const { DataisLoaded, alcoholicDrinks } = this.state;
-        if (!DataisLoaded) return <div>
-            <h1>Loading...</h1>
-        </div>
+    if (dataIsLoaded === false) {
+        return (
+            <div>
+                <h1>Loading...</h1>
+            </div>);
+    }
 
         return (
             <div >
@@ -41,6 +35,6 @@ class Alcoholic extends Component {
             </div>
         );
     }
-}
+
 
 export default Alcoholic;
