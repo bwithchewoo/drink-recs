@@ -13,9 +13,7 @@ function Suggestion({alcoholicDrinks, setAlcoholicDrinks, nonAlcoholicDrinks, se
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setDrink('');
-        setImage("");
-        setIsAlcoholic(false);
+
         const configObj = {
             method: 'POST',
             body: JSON.stringify({
@@ -26,9 +24,10 @@ function Suggestion({alcoholicDrinks, setAlcoholicDrinks, nonAlcoholicDrinks, se
         }
         fetch(`https://drinks-server.herokuapp.com/${isAlcoholic ? 'alcoholic' : 'non-alcoholic'}`, configObj)
             .then(res => res.json())
-            .then(data => 
-                addDrink(data, isAlcoholic)
-            )
+            .then(data => addDrink(data, isAlcoholic))
+        setDrink('');
+        setImage("");
+        setIsAlcoholic(false);
     }
 
     const checkFieldComplete = (drinkinput, imageinput) => {
