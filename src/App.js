@@ -22,7 +22,7 @@ function App(){
             <Route exact path="/" element={<Home />} />
             <Route exact path="/alcoholic" element={<Alcoholic alcoholicDrinks={alcoholicDrinks} setAlcoholicDrinks={setAlcoholicDrinks}/>} />
             <Route exact path="/non-alcoholic" element={<Nonalcoholic nonAlcoholicDrinks={nonAlcoholicDrinks} setNonAlcoholicDrinks={setNonAlcoholicDrinks}/>} />
-            <Route exact path="/suggestion" element={<Suggestion/>}/>
+            <Route exact path="/suggestion" element={<Suggestion setAlcoholicDrinks={setAlcoholicDrinks} alcoholicDrinks={alcoholicDrinks} nonAlcoholicDrinks={nonAlcoholicDrinks}setNonAlcoholicDrinks={setNonAlcoholicDrinks}/>}/>
           </Routes>
         </BrowserRouter>
       </div>

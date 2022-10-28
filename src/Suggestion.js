@@ -1,37 +1,34 @@
 import React, { useState } from 'react';
 
 
-function Suggestion() {
+function Suggestion({alcoholicDrinks, setAlcoholicDrinks, nonAlcoholicDrinks, setNonAlcoholicDrinks}) {
     const [drink, setDrink] = useState("");
     const [image, setImage] = useState("");
     const [isAlcoholic, setIsAlcoholic] = useState(false);
     const [isDisabled, setIsDisabled] = useState(true);
     
+    function addDrink(newDrink, alcoholic){
+        alcoholic ? setAlcoholicDrinks([...alcoholicDrinks, newDrink]) : setNonAlcoholicDrinks([...nonAlcoholicDrinks, newDrink])
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
         setDrink('');
         setImage("");
         setIsAlcoholic(false);
-    
-            fetch(`https://drinks-server.herokuapp.com/${isAlcoholic ? 'alcoholic' : 'non-alcoholic'}`, {
+        const configObj = {
             method: 'POST',
             body: JSON.stringify({
                 "strDrink": drink,
                 "strDrinkThumb": image
             }),
             headers: { 'Content-type': 'application/json'}
-        })
-        // }
-        // // fetch(`https://drinks-server.herokuapp.com/${isAlcoholic ? 'alcoholic' : 'non-alcoholic'}`
-        //     fetch('https://drinks-server.herokuapp.com/alcoholic', {
-        //     method: 'POST',
-        //     body: JSON.stringify({
-        //         "strDrink": drink,
-        //         "strDrinkThumb": image
-        //     }),
-        //     headers: { 'Content-type': 'application/json'}
-        //     })
+        }
+        fetch(`https://drinks-server.herokuapp.com/${isAlcoholic ? 'alcoholic' : 'non-alcoholic'}`, configObj)
+            .then(res => res.json())
+            .then(data => 
+                addDrink(data, isAlcoholic)
+            )
     }
 
     const checkFieldComplete = (drinkinput, imageinput) => {
