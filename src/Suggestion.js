@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
 
 
-function Suggestion({alcoholicDrinks, setAlcoholicDrinks, nonAlcoholicDrinks, setNonAlcoholicDrinks}) {
+function Suggestion({addDrink}) {
     const [drink, setDrink] = useState("");
     const [image, setImage] = useState("");
     const [isAlcoholic, setIsAlcoholic] = useState(false);
     const [isDisabled, setIsDisabled] = useState(true);
-    
-    function addDrink(newDrink, alcoholic){
-        console.log('alcoholicDrinks:', alcoholicDrinks, 'newDrink:', newDrink, 'combined New State:', [...alcoholicDrinks, newDrink])
-        alcoholic ? setAlcoholicDrinks([...alcoholicDrinks, newDrink]) : setNonAlcoholicDrinks([...nonAlcoholicDrinks, newDrink])
-    }
 
     const handleSubmit = (event) => {
         event.preventDefault();

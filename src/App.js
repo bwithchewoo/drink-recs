@@ -16,6 +16,10 @@ function App() {
   const [dataIsLoadedAlcoholic, setDataIsLoadedAlcoholic] = useState(false);
   const [dataIsLoadedNonAlcoholic, setDataIsLoadedNonAlcoholic] = useState(false);
 
+  const addDrink = (newDrink, isAlcoholic) => {
+    isAlcoholic ? setAlcoholicDrinks([...alcoholicDrinks, newDrink]) : setNonAlcoholicDrinks([...nonAlcoholicDrinks, newDrink])
+  }
+
   useEffect(() => {
     fetch("https://drinks-server.herokuapp.com/alcoholic")
       .then((res) => res.json())
@@ -39,7 +43,7 @@ function App() {
             <Route exact path="/" element={<Home />} />
             <Route exact path="/alcoholic" element={<Alcoholic dataLoaded={dataIsLoadedAlcoholic} alcoholicDrinks={alcoholicDrinks} />} />
             <Route exact path="/non-alcoholic" element={<Nonalcoholic dataLoaded={dataIsLoadedNonAlcoholic} nonAlcoholicDrinks={nonAlcoholicDrinks} />} />
-            <Route exact path="/suggestion" element={<Suggestion setAlcoholicDrinks={setAlcoholicDrinks} alcoholicDrinks={alcoholicDrinks} nonAlcoholicDrinks={nonAlcoholicDrinks} setNonAlcoholicDrinks={setNonAlcoholicDrinks} />} />
+            <Route exact path="/suggestion" element={<Suggestion addDrink={addDrink} />} />
           </Routes>
         </BrowserRouter>
       </div>
